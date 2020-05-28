@@ -1,0 +1,22 @@
+{
+  "name": "radar-query-termos-simples-randomicos",
+  "operation-type": "search",
+  "pages": 1,
+  "results-per-page": 10,
+  "param-source": "radar-query-simples-termos-randomicos-source"
+},
+{
+  "name": "radar-query-termos-simples-randomicos-aggregate",
+  "operation-type": "search",
+  "pages": 1,
+  "results-per-page": 10,
+  "param-source": "radar-query-simples-termos-randomicos-aggregate-source"
+},
+{
+  "name": "term-query",
+  "operation-type": "search",
+  "pages": 1,
+  "results-per-page": 10,
+  "param-source": "term-query-source",
+  "atributo": "numero_cnj"
+}

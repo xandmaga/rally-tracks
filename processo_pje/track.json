@@ -1,0 +1,16 @@
+{% import "rally.helpers" as rally %}
+{
+  "version": 2,
+  "description": "Teste de track específica para benchmaks de processos do PJe.",
+  "indices": [
+    {
+      "name": "pje_processo_v007_b"
+    }
+  ],
+  "operations": [
+    {{ rally.collect(parts="operations/*.json") }}
+  ],
+  "challenges": [
+    {{ rally.collect(parts="challenges/*.json") }}
+  ]
+}

@@ -1,0 +1,659 @@
+{
+  "pje_processo_v007_a" : {
+    "mappings" : {
+      "dynamic" : "strict",
+      "properties" : {
+        "agendamentos" : {
+          "type" : "nested",
+          "properties" : {
+            "advogados_assistencia" : {
+              "type" : "text",
+              "index" : false
+            },
+            "advogados_sustentacao_oral" : {
+              "type" : "text",
+              "index" : false
+            },
+            "advogados_videoconferencia" : {
+              "type" : "text",
+              "index" : false
+            },
+            "data_prevista" : {
+              "type" : "date"
+            },
+            "data_realizada" : {
+              "type" : "date"
+            },
+            "descricao_dispositivo_decisao" : {
+              "type" : "text",
+              "index" : false
+            },
+            "descricao_sustentacao_oral" : {
+              "type" : "text",
+              "index" : false
+            },
+            "descricao_tira" : {
+              "type" : "text",
+              "index" : false
+            },
+            "documento" : {
+              "properties" : {
+                "hash" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "magistrado_responsavel" : {
+              "type" : "text",
+              "fields" : {
+                "original" : {
+                  "type" : "keyword"
+                }
+              },
+              "analyzer" : "portuguese"
+            },
+            "situacao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "tipo" : {
+              "properties" : {
+                "descricao" : {
+                  "type" : "keyword",
+                  "normalizer" : "uppercase_normalizer"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "tipo_audiencia" : {
+              "properties" : {
+                "descricao" : {
+                  "type" : "keyword",
+                  "normalizer" : "uppercase_normalizer"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
+        "assist_judiciaria_gratuita" : {
+          "type" : "boolean"
+        },
+        "assuntos" : {
+          "type" : "nested",
+          "properties" : {
+            "codigo_cnj" : {
+              "type" : "keyword"
+            },
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "principal" : {
+              "type" : "boolean"
+            }
+          }
+        },
+        "classe" : {
+          "properties" : {
+            "codigo_cnj" : {
+              "type" : "keyword"
+            },
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "id" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "comarca" : {
+          "properties" : {
+            "codigo_infoguia" : {
+              "type" : "keyword"
+            },
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            }
+          }
+        },
+        "competencia" : {
+          "properties" : {
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "id" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "data_baixa" : {
+          "type" : "date",
+          "format" : "strict_date_optional_time"
+        },
+        "data_inclusao_elastic" : {
+          "type" : "date"
+        },
+        "distribuicao" : {
+          "properties" : {
+            "primeira" : {
+              "properties" : {
+                "data" : {
+                  "type" : "date",
+                  "format" : "strict_date_optional_time"
+                },
+                "magistrado" : {
+                  "properties" : {
+                    "id" : {
+                      "type" : "keyword"
+                    },
+                    "nome" : {
+                      "type" : "keyword"
+                    }
+                  }
+                },
+                "tipo" : {
+                  "properties" : {
+                    "descricao" : {
+                      "type" : "keyword",
+                      "normalizer" : "uppercase_normalizer"
+                    },
+                    "id" : {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "ultima" : {
+              "properties" : {
+                "data" : {
+                  "type" : "date",
+                  "format" : "strict_date_optional_time"
+                },
+                "magistrado" : {
+                  "properties" : {
+                    "id" : {
+                      "type" : "keyword"
+                    },
+                    "nome" : {
+                      "type" : "keyword"
+                    }
+                  }
+                },
+                "tipo" : {
+                  "properties" : {
+                    "descricao" : {
+                      "type" : "keyword",
+                      "normalizer" : "uppercase_normalizer"
+                    },
+                    "id" : {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "documentos" : {
+          "type" : "nested",
+          "include_in_parent" : true,
+          "properties" : {
+            "assinado_por" : {
+              "type" : "keyword"
+            },
+            "content_type" : {
+              "type" : "keyword"
+            },
+            "conteudo_indexado" : {
+              "type" : "boolean"
+            },
+            "conteudo_texto" : {
+              "type" : "text",
+              "term_vector" : "with_positions_offsets",
+              "index_options" : "offsets",
+              "fields" : {
+                "original" : {
+                  "type" : "text",
+                  "term_vector" : "with_positions_offsets",
+                  "analyzer" : "exact"
+                }
+              },
+              "analyzer" : "portuguese"
+            },
+            "data_inclusao" : {
+              "type" : "date",
+              "format" : "strict_date_optional_time"
+            },
+            "data_publicacao" : {
+              "type" : "date",
+              "format" : "strict_date_optional_time"
+            },
+            "hash" : {
+              "type" : "keyword"
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "nivel_sigilo" : {
+              "type" : "keyword"
+            },
+            "nome" : {
+              "type" : "keyword"
+            },
+            "sistema" : {
+              "type" : "keyword"
+            },
+            "tamanho_binario_bytes" : {
+              "type" : "long"
+            },
+            "tipo" : {
+              "properties" : {
+                "descricao" : {
+                  "type" : "keyword",
+                  "normalizer" : "uppercase_normalizer"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
+        "expedientes" : {
+          "type" : "nested",
+          "properties" : {
+            "ciencia" : {
+              "properties" : {
+                "data" : {
+                  "type" : "date",
+                  "format" : "strict_date_optional_time"
+                },
+                "responsavel" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "data_fechamento" : {
+              "type" : "date",
+              "format" : "strict_date_optional_time"
+            },
+            "data_inclusao" : {
+              "type" : "date",
+              "format" : "strict_date_optional_time"
+            },
+            "destinatario" : {
+              "properties" : {
+                "nome" : {
+                  "type" : "text",
+                  "fields" : {
+                    "original" : {
+                      "type" : "keyword"
+                    }
+                  },
+                  "analyzer" : "portuguese"
+                },
+                "orgao" : {
+                  "type" : "text",
+                  "fields" : {
+                    "original" : {
+                      "type" : "keyword"
+                    }
+                  },
+                  "analyzer" : "portuguese"
+                }
+              }
+            },
+            "documento" : {
+              "properties" : {
+                "hash" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                },
+                "tipo" : {
+                  "properties" : {
+                    "descricao" : {
+                      "type" : "keyword",
+                      "normalizer" : "uppercase_normalizer"
+                    },
+                    "id" : {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "eletronico" : {
+              "type" : "boolean"
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "intimacao_pessoal" : {
+              "type" : "boolean"
+            },
+            "prazo_legal" : {
+              "type" : "keyword"
+            },
+            "texto" : {
+              "type" : "text",
+              "fields" : {
+                "original" : {
+                  "type" : "keyword"
+                }
+              },
+              "analyzer" : "portuguese"
+            },
+            "urgente" : {
+              "type" : "boolean"
+            }
+          }
+        },
+        "fase" : {
+          "type" : "keyword"
+        },
+        "julgamentos" : {
+          "type" : "nested",
+          "properties" : {
+            "complemento" : {
+              "type" : "keyword"
+            },
+            "data" : {
+              "type" : "date"
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "proferido_por" : {
+              "type" : "keyword"
+            },
+            "resultado" : {
+              "type" : "keyword"
+            },
+            "visibilidade" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "localizacao" : {
+          "type" : "keyword"
+        },
+        "meio" : {
+          "type" : "keyword"
+        },
+        "movimentacoes" : {
+          "type" : "nested",
+          "properties" : {
+            "complemento" : {
+              "type" : "keyword"
+            },
+            "data" : {
+              "type" : "date",
+              "format" : "strict_date_optional_time"
+            },
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "evento" : {
+              "properties" : {
+                "codigo_cnj" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "visibilidade" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "natureza" : {
+          "properties" : {
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "id" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "numero_cnj" : {
+          "type" : "keyword"
+        },
+        "numero_tj" : {
+          "type" : "keyword"
+        },
+        "orgao_julgador" : {
+          "properties" : {
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "id" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "partes" : {
+          "type" : "nested",
+          "properties" : {
+            "baixa" : {
+              "properties" : {
+                "data" : {
+                  "type" : "date"
+                },
+                "motivo" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "denominacao" : {
+              "properties" : {
+                "descricao" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "documentos" : {
+              "type" : "nested",
+              "properties" : {
+                "complemento" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                },
+                "numero" : {
+                  "type" : "keyword"
+                },
+                "principal" : {
+                  "type" : "boolean"
+                },
+                "tipo" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "nome" : {
+              "type" : "text",
+              "fields" : {
+                "original" : {
+                  "type" : "keyword"
+                }
+              },
+              "analyzer" : "portuguese"
+            },
+            "nomes_alternativos" : {
+              "type" : "text",
+              "fields" : {
+                "original" : {
+                  "type" : "keyword"
+                }
+              },
+              "analyzer" : "portuguese"
+            },
+            "representantes" : {
+              "type" : "nested",
+              "properties" : {
+                "cpf" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                },
+                "nome" : {
+                  "type" : "text",
+                  "fields" : {
+                    "original" : {
+                      "type" : "keyword"
+                    }
+                  },
+                  "analyzer" : "portuguese"
+                },
+                "oab" : {
+                  "properties" : {
+                    "codigo" : {
+                      "type" : "keyword"
+                    },
+                    "tipo" : {
+                      "type" : "keyword"
+                    },
+                    "uf" : {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "situacao" : {
+              "type" : "keyword"
+            },
+            "tipo" : {
+              "properties" : {
+                "descricao" : {
+                  "type" : "keyword",
+                  "normalizer" : "uppercase_normalizer"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "tipo_polo" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "pedido_urgencia" : {
+          "type" : "boolean"
+        },
+        "possui_conteudo" : {
+          "type" : "boolean"
+        },
+        "prioridade_legal" : {
+          "type" : "boolean"
+        },
+        "relacionados" : {
+          "type" : "nested",
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "numero_processo" : {
+              "type" : "keyword"
+            },
+            "tipo" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "segredo_justica" : {
+          "type" : "boolean"
+        },
+        "sistema" : {
+          "type" : "keyword"
+        },
+        "situacao" : {
+          "type" : "keyword"
+        },
+        "tipo_justica" : {
+          "properties" : {
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "id" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "ultima_movimentacao" : {
+          "properties" : {
+            "complemento" : {
+              "type" : "keyword"
+            },
+            "data" : {
+              "type" : "date",
+              "format" : "strict_date_optional_time"
+            },
+            "descricao" : {
+              "type" : "keyword",
+              "normalizer" : "uppercase_normalizer"
+            },
+            "evento" : {
+              "properties" : {
+                "codigo_cnj" : {
+                  "type" : "keyword"
+                },
+                "id" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "visibilidade" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "valor_causa" : {
+          "type" : "double"
+        }
+      }
+    }
+  }
+}

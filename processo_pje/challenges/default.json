@@ -1,0 +1,66 @@
+{
+  "name": "radar-query-simples-termos-randomicos-challenge",
+  "default": true,
+  "description": "Executa consultas com termos randômicos utilizando consulta simples do Radar.",
+  "schedule": [
+    {
+      "operation": "radar-query-termos-simples-randomicos",
+      "clients": 10,
+      "target-throughput": 10,
+      "warmup-time-period": 120,
+      "time-period": 480
+    }
+  ]
+},
+{
+  "name": "radar-5s",
+  "description": "Executa consultas com termos randômicos utilizando consulta simples do Radar.",
+  "schedule": [
+    {
+      "operation": "radar-query-termos-simples-randomicos",
+      "clients": 1,
+      "target-throughput": 20,
+      "warmup-time-period": 2,
+      "time-period": 3
+    }
+  ]
+},
+{
+  "name": "radar-20s",
+  "description": "Executa consultas com termos randômicos utilizando consulta simples do Radar.",
+  "schedule": [
+    {
+      "operation": "radar-query-termos-simples-randomicos",
+      "clients": 1,
+      "target-throughput": 20,
+      "warmup-time-period": 10,
+      "time-period": 10
+    }
+  ]
+},
+{
+  "name": "radar-query-simples-termos-randomicos-challenge-it",
+  "description": "Executa consultas com termos randômicos utilizando consulta simples do Radar.",
+  "schedule": [
+    {
+      "operation": "radar-query-termos-simples-randomicos",
+      "clients": 1,
+      "target-throughput": 20,
+      "warmup-iterations": 50,
+      "iterations": 500
+    }
+  ]
+},
+{
+  "name": "radar-throughput-10c",
+  "description": "Executa consultas com termos randômicos utilizando consulta simples do Radar.",
+  "schedule": [
+    {
+      "operation": "term-query",
+      "clients": 10,
+      "target-throughput": 3,      
+      "warmup-iterations": 5,
+      "iterations": 100
+    }
+  ]
+}
